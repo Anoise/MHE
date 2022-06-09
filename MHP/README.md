@@ -6,7 +6,8 @@
 python run_mhp_cifar.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
-    --epochs 200 --batch-size 256  
+    --epochs 200
+    --batch-size 256  
     --num-classes 10 10 
     --save-path checkpoint
 ```
