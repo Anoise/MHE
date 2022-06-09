@@ -15,3 +15,7 @@ python run_mhp_cifar.py
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 
 Note that the hyperparameter "num-classes" is the factorization of the total number of categories.
+
+## Testing
+
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
