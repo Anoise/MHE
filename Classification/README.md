@@ -68,6 +68,7 @@ Go to the directory "MHCE/Classification", and run
 ```python
 python MHCE-ImageNet/[main_mhp.py or main_mhe.py or main_mhs.py]
     -a resnet50 
+    --data [your ImageNet data path]
     --dist-url 'tcp://127.0.0.1:6006' 
     --dist-backend 'nccl' 
     --multiprocessing-distributed 
