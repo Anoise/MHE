@@ -26,7 +26,7 @@ from datetime import datetime
 def log(s,path=None):
     '''use log to replace the print to record the useful information'''
     print(s)
-    path='train.log' if path is None else path
+    path=args.save_path+'/train.log' if path is None else path
     with open(path, 'a') as f:
         f.write(str(datetime.now()) + ': ' + s + '\n')
         f.close()
