@@ -57,12 +57,28 @@ Note that:
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num-classes" is the factorization of the total number of categories, which can be greater than the number of categories.
 
-## Testing
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
 
 ---
 
 # MHCE for ImageNet
 The code repository for training ImageNet refers to Pytorch[https://pytorch.org].
 
+Go to the directory "MHCE/Classification", and run
+```python
+python MHCE-ImageNet/[main_mhp.py or main_mhe.py or main_mhs.py]
+    -a resnet50 
+    --dist-url 'tcp://127.0.0.1:6006' 
+    --dist-backend 'nccl' 
+    --multiprocessing-distributed 
+    --world-size 1 
+    --rank 0 [imagenet-folder with train and val folders]
+    --epochs 100
+    --batch-size 256  
+    --num-classes 40 25 
+```
+
+---
+## Testing
+
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
