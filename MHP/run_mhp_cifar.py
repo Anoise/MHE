@@ -28,16 +28,16 @@ def parse_args():
 
     parser.add_argument("--img-size", default=32, type=int)
     parser.add_argument("--dataset", default='c100', type=str,choices=['c100','c10'])
-    parser.add_argument("--data_path", default='../../Data/cifar100', type=str,
+    parser.add_argument("--data-path", default='../../Data/cifar100', type=str,
                         help='the data path of the dataset')
     parser.add_argument("--lr", default=0.1, type=float, help='learning rate')
     parser.add_argument("--momentum", default=0.9, type=float, help='momentum')
     parser.add_argument("--weight-decay", default=5e-4, type=float)
-    parser.add_argument("--eta_min", default=1e-5, type=float)
+    parser.add_argument("--eta-min", default=1e-5, type=float)
     parser.add_argument("--batch-size", default=256, type=int)
     parser.add_argument("--epochs", default=200, type=int)
-    parser.add_argument("--num_classes", default=[10,10], type=list, help='the number of classifier heads')
-    parser.add_argument('--save_path', type=str, default='checkpoint',  help='save_path')
+    parser.add_argument("--num-classes", nargs='*', default=[10,10], type=int, help='the number of classifier heads')
+    parser.add_argument('--save-path', type=str, default='checkpoint',  help='save_path')
     parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint', default=False)
     parser.set_defaults(resume=False)
     args = parser.parse_args()
@@ -181,7 +181,6 @@ if __name__ == '__main__':
         start_epoch = checkpoint['epoch']
     else:
         print('==> Building model..')
-        # net = ResNet(in_planes=48)
         net = ResNet18(num_classes=args.num_classes)
 
     if use_cuda:
@@ -192,7 +191,6 @@ if __name__ == '__main__':
     # criterion = nn.MSELoss()
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
-    # train 200 epoch
     end_epoch = start_epoch + args.epochs
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, end_epoch, eta_min=args.eta_min)
 

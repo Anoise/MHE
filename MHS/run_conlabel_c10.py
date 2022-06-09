@@ -34,19 +34,20 @@ def log(s,path=None):
 def parse_args():
     parser = argparse.ArgumentParser(description='Train classification network')
 
-    parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint', default=False)
-    # parser.set_defaults(resume=False)
-
     parser.add_argument("--img-size", default=32, type=int)
-    parser.add_argument("--patch-size", default=4, type=int)
-    parser.add_argument("--num-layers", default=4, type=int)
-    parser.add_argument("--d-model", default=64, type=int)
-    parser.add_argument("--num-heads", default=4, type=int)
-    parser.add_argument("--mlp-dim", default=128, type=int)
-    parser.add_argument("--lr", default=3e-4, type=float)
-    parser.add_argument("--weight-decay", default=1e-4, type=float)
+    parser.add_argument("--dataset", default='c100', type=str,choices=['c100','c10'])
+    parser.add_argument("--data_path", default='../../../Data/cifar100', type=str,
+                        help='the data path of the dataset')
+    parser.add_argument("--lr", default=0.1, type=float, help='learning rate')
+    parser.add_argument("--momentum", default=0.9, type=float, help='momentum')
+    parser.add_argument("--weight-decay", default=5e-4, type=float)
+    parser.add_argument("--eta_min", default=1e-5, type=float)
     parser.add_argument("--batch-size", default=256, type=int)
     parser.add_argument("--epochs", default=200, type=int)
+    parser.add_argument("--num_classes", default=[10,10], type=list, help='the number of classifier heads')
+    parser.add_argument('--save_path', type=str, default='checkpoint',  help='save_path')
+    parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint', default=False)
+    parser.set_defaults(resume=False)
     args = parser.parse_args()
 
     return args

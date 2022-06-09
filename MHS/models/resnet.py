@@ -125,7 +125,6 @@ class ResNet(nn.Module):
             m_labels = labal_coding(labels, self.num_classes)
             logits = self._get_group_logits(featrues,m_labels)
             loss = self.loss_fn(logits,m_labels[:,1])
-
             return loss
         else:
             outputs = featrues @ self.weight.view(-1,self.weight.size(-1)).T
