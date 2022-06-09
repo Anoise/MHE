@@ -7,9 +7,9 @@ git clone git@github.com:liangdaojun/MHCE.git
 ```
 
 ### Multi-Head Product (MHP)
-Go to the directory "MHCE/MHP-CIFAR", and run
+Go to the directory "MHCE/Classification", and run
 ```python
-python run_mhp_cifar.py 
+python MHP-CIFAR/run_mhp_cifar.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
     --epochs 200
@@ -17,10 +17,11 @@ python run_mhp_cifar.py
     --num-classes 10 10 
     --save-path checkpoint_mhp
 ```
-Go to the directory "MHCE/MHE-CIFAR", and run
+
 ### Multi-Head Embedding (MHE)
+Go to the directory "MHCE/Classification", and run
 ```python
-python run_mhs_cifar.py 
+python MHE-CIFAR/run_mhe_h2.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
     --epochs 200
@@ -28,11 +29,21 @@ python run_mhs_cifar.py
     --num-classes 10 10 
     --save-path checkpoint_mhe
 ```
-
-Go to the directory "MHCE/MHS-CIFAR", and run
-### Multi-Head Sampling (MHS)
+For head=3, run
 ```python
-python run_mhs_cifar.py 
+python MHE-CIFAR/run_mhe_h3.py 
+    --dataset c100 
+    --data-path ../../Data/cifar100  
+    --epochs 200
+    --batch-size 256  
+    --num-classes 4 5 5
+    --save-path checkpoint_mhe
+```
+
+### Multi-Head Sampling (MHS)
+Go to the directory "MHCE/Classification", and run
+```python
+python MHS-CIFAR/run_mhs_cifar.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
     --epochs 200

@@ -158,7 +158,6 @@ class ResNet(nn.Module):
     def _get_embed_outputs(self, candidates, features):
         emb = self.classifier(features)
         embed_weights = self.embed(candidates)
-        print(embed_weights.shape, emb.unsqueeze(-1).shape, 'xxx')
         outputs = torch.bmm(embed_weights, emb.unsqueeze(-1)).squeeze(-1)
         return outputs
 

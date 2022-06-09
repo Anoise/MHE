@@ -210,8 +210,8 @@ if __name__ == '__main__':
         scheduler.step()
         lr = scheduler.get_last_lr()
         print('lr ', lr)
-    #print('best acc', best_acc)
-    log('best acc={:4.f}'.format(best_acc))
+
+    log('best acc={:.4f}'.format(best_acc))
 
     np.save(args.save_path + '/train_infos.npy', train_infos)
     np.save(args.save_path + '/test_infos.npy', test_infos)
