@@ -5,6 +5,8 @@ Clone the code repository
 ```git
 git clone git@github.com:liangdaojun/MHCE.git
 ```
+
+### MHP training
 Go to directory "MHCE/MHP", and run
 ```python
 python run_mhp_cifar.py 
@@ -13,7 +15,30 @@ python run_mhp_cifar.py
     --epochs 200
     --batch-size 256  
     --num-classes 10 10 
-    --save-path checkpoint
+    --save-path checkpoint_mhp
+```
+Go to directory "MHCE/MHE", and run
+### MHE Training
+```python
+python run_mhs_cifar.py 
+    --dataset c100 
+    --data-path ../../Data/cifar100  
+    --epochs 200
+    --batch-size 256  
+    --num-classes 10 10 
+    --save-path checkpoint_mhe
+```
+
+Go to directory "MHCE/MHS", and run
+### MHS Training
+```python
+python run_mhs_cifar.py 
+    --dataset c100 
+    --data-path ../../Data/cifar100  
+    --epochs 200
+    --batch-size 256  
+    --num-classes 10 10 
+    --save-path checkpoint_mhs
 ```
 
 Note that:

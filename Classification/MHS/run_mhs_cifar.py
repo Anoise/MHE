@@ -115,7 +115,6 @@ if __name__ == '__main__':
     best_acc = 0  # best test accuracy
     start_epoch = 0  # start from epoch 0 or last checkpoint epoch
     model_path = args.save_path +'/ckpt.t7'
-    num_classes = [10,10]
 
     # Data
     print('==> Preparing data..')
@@ -156,7 +155,7 @@ if __name__ == '__main__':
         start_epoch = checkpoint['epoch']
     else:
         print('==> Building model..')
-        net = ResNet18(num_classes=num_classes)
+        net = ResNet18(num_classes=args.num_classes)
 
     if use_cuda:
         net.cuda()
