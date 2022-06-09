@@ -175,7 +175,6 @@ if __name__ == '__main__':
         test_info = test(epoch)
         train_infos.append(train_info)
         test_infos.append(test_info)
-        # adjust_learning_rate(optimizer, epoch, end_epoch)
         scheduler.step()
         lr = scheduler.get_last_lr()
         print('lr ', lr)

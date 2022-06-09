@@ -1,4 +1,4 @@
-# MHP for CIFAR
+# MHCE for CIFAR
 
 ## Training
 Clone the code repository
@@ -6,8 +6,8 @@ Clone the code repository
 git clone git@github.com:liangdaojun/MHCE.git
 ```
 
-### MHP training
-Go to directory "MHCE/MHP", and run
+### Multi-Head Product (MHP)
+Go to the directory "MHCE/MHP-CIFAR", and run
 ```python
 python run_mhp_cifar.py 
     --dataset c100 
@@ -17,8 +17,8 @@ python run_mhp_cifar.py
     --num-classes 10 10 
     --save-path checkpoint_mhp
 ```
-Go to directory "MHCE/MHE", and run
-### MHE Training
+Go to the directory "MHCE/MHE-CIFAR", and run
+### Multi-Head Embedding (MHE)
 ```python
 python run_mhs_cifar.py 
     --dataset c100 
@@ -29,8 +29,8 @@ python run_mhs_cifar.py
     --save-path checkpoint_mhe
 ```
 
-Go to directory "MHCE/MHS", and run
-### MHS Training
+Go to the directory "MHCE/MHS-CIFAR", and run
+### Multi-Head Sampling (MHS)
 ```python
 python run_mhs_cifar.py 
     --dataset c100 
@@ -46,9 +46,12 @@ Note that:
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num-classes" is the factorization of the total number of categories, which can be greater than the number of categories.
 
-# MHP for ImageNet
-The code repository for training ImageNet refers to Pytorch[https://pytorch.org].
-
 ## Testing
 
 <img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
+
+---
+
+# MHCE for ImageNet
+The code repository for training ImageNet refers to Pytorch[https://pytorch.org].
+
