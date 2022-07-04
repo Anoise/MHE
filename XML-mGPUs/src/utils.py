@@ -26,6 +26,12 @@ class Logger():
             f.write(datetime.datetime.now().strftime('%Y.%m.%d-%H:%M:%S') + text + '\n')
 
 def get_exp_name(args):
+    if not os.path.exists('models'):
+        os.makedirs('models')
+    if not os.path.exists('results'):
+        os.makedirs('results')
+    if not os.path.exists('log'):
+        os.makedirs('log')
     name = [args.dataset, '' if args.model == 'bert-base' else args.model]
     return '_'.join([i for i in name if i != ''])
 

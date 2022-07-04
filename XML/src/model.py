@@ -13,8 +13,8 @@ from transformers import XLNetTokenizer, XLNetModel, XLNetConfig
 from tokenizers import BertWordPieceTokenizer
 from transformers import RobertaTokenizerFast
 
-path = '../NLP-Model/'
-def get_bert(bert_name):
+
+def get_bert(bert_name, path):
     if 'roberta' in bert_name:
         print('load roberta-base')
         model_config = RobertaConfig.from_pretrained(path+'roberta-base')
@@ -32,8 +32,9 @@ def get_bert(bert_name):
         bert = BertModel.from_pretrained(path+'bert-base-uncased', config=model_config)
     return bert
 
+
 class XMLMHE(nn.Module):
-    def __init__(self, n_labels, group_y=None, bert='bert-base', feature_layers=5, dropout=0.5, update_count=1,
+    def __init__(self, n_labels, group_y=None, bert='bert-base', bert_path='../NLP-Model/', feature_layers=5, dropout=0.5, update_count=1,
                  candidates_topk=10, 
                  use_swa=True, swa_warmup_epoch=10, swa_update_step=200, hidden_dim=300):
         super(XMLMHE, self).__init__()
@@ -42,6 +43,7 @@ class XMLMHE(nn.Module):
         self.swa_warmup_epoch = swa_warmup_epoch
         self.swa_update_step = swa_update_step
         self.swa_state = {}
+        self.path = bert_path
 
         self.update_count = update_count
 
@@ -50,7 +52,7 @@ class XMLMHE(nn.Module):
         print('swa', self.use_swa, self.swa_warmup_epoch, self.swa_update_step, self.swa_state)
         print('update_count', self.update_count)
 
-        self.bert_name, self.bert = bert, get_bert(bert)
+        self.bert_name, self.bert = bert, get_bert(bert,bert_path)
         self.feature_layers, self.drop_out = feature_layers, nn.Dropout(dropout)
 
         self.group_y = group_y
@@ -164,7 +166,7 @@ class XMLMHE(nn.Module):
         beta = 1.0 / self.swa_state['models_num']
         with torch.no_grad():
             for n, p in self.named_parameters():
-                self.swa_state[n].mul_(1.0 - beta).add_(beta, p.data.cpu())
+                self.swa_state[n].mul_(1.0 - beta).add_(p.data.cpu(), alpha=beta)
 
     def swa_swap_params(self):
         if 'models_num' not in self.swa_state:
@@ -175,9 +177,9 @@ class XMLMHE(nn.Module):
 
     def get_fast_tokenizer(self):
         if 'roberta' in self.bert_name:
-            tokenizer = RobertaTokenizerFast.from_pretrained(path+'roberta-base', do_lower_case=True)
+            tokenizer = RobertaTokenizerFast.from_pretrained(self.path+'roberta-base', do_lower_case=True)
         elif 'xlnet' in self.bert_name:
-            tokenizer = XLNetTokenizer.from_pretrained(path+'xlnet-base-cased') 
+            tokenizer = XLNetTokenizer.from_pretrained(self.path+'xlnet-base-cased') 
         else:
             tokenizer = BertWordPieceTokenizer(
                 "data/.bert-base-uncased-vocab.txt",
@@ -187,13 +189,13 @@ class XMLMHE(nn.Module):
     def get_tokenizer(self):
         if 'roberta' in self.bert_name:
             print('load roberta-base tokenizer')
-            tokenizer = RobertaTokenizer.from_pretrained(path+'roberta-base', do_lower_case=True)
+            tokenizer = RobertaTokenizer.from_pretrained(self.path+'roberta-base', do_lower_case=True)
         elif 'xlnet' in self.bert_name:
             print('load xlnet-base-cased tokenizer')
-            tokenizer = XLNetTokenizer.from_pretrained(path+'xlnet-base-cased')
+            tokenizer = XLNetTokenizer.from_pretrained(self.path+'xlnet-base-cased')
         else:
             print('load bert-base-uncased tokenizer')
-            tokenizer = BertTokenizer.from_pretrained(path+'bert-base-uncased', do_lower_case=True)
+            tokenizer = BertTokenizer.from_pretrained(self.path+'bert-base-uncased', do_lower_case=True)
         return tokenizer
 
     def get_accuracy(self, candidates, logits, labels):
@@ -268,9 +270,8 @@ class XMLMHE(nn.Module):
                    
                 if self.use_swa and step % self.swa_update_step == 0:
                     self.swa_step()
-
                 bar.set_postfix(loss=loss.item())
-        
+
         return train_loss
 
     def eval_epoch(self, epoch, eval_loader, log=None, mode='eval'):
@@ -298,30 +299,38 @@ class XMLMHE(nn.Module):
             outputs = self(**inputs)
 
             bar.update(1)
-
-            group_logits, candidates, logits = outputs
-
             labels = batch[3]
-            group_labels = batch[4]
+           
+            if self.group_y is None:
+                logits = outputs
+                _total, _acc1, _acc3, _acc5 =  self.get_accuracy(None, logits, labels.cpu().numpy())
+                total += _total; acc1 += _acc1; acc3 += _acc3; acc5 += _acc5
+                p1 = acc1 / total
+                p3 = acc3 / total / 3
+                p5 = acc5 / total / 5
+                bar.set_postfix(p1=p1, p3=p3, p5=p5)
+            else:
+                group_labels = batch[4]
+                group_logits, candidates, logits = outputs
+                _total, _acc1, _acc3, _acc5 = self.get_accuracy(candidates, logits, labels.cpu().numpy())
+                total += _total; acc1 += _acc1; acc3 += _acc3; acc5 += _acc5
+                p1 = acc1 / total
+                p3 = acc3 / total / 3
+                p5 = acc5 / total / 5
 
-            _total, _acc1, _acc3, _acc5 = self.get_accuracy(candidates, logits, labels.cpu().numpy())
-            total += _total; acc1 += _acc1; acc3 += _acc3; acc5 += _acc5
-            p1 = acc1 / total
-            p3 = acc3 / total / 3
-            p5 = acc5 / total / 5
-
-            _, _g_acc1, _g_acc3, _g_acc5 = self.get_accuracy(None, group_logits, group_labels.cpu().numpy())
-            g_acc1 += _g_acc1; g_acc3 += _g_acc3; g_acc5 += _g_acc5
-            g_p1 = g_acc1 / total
-            g_p3 = g_acc3 / total / 3
-            g_p5 = g_acc5 / total / 5
-            bar.set_postfix(p1=p1, p3=p3, p5=p5, g_p1=g_p1, g_p3=g_p3, g_p5=g_p5)
+                _, _g_acc1, _g_acc3, _g_acc5 = self.get_accuracy(None, group_logits, group_labels.cpu().numpy())
+                g_acc1 += _g_acc1; g_acc3 += _g_acc3; g_acc5 += _g_acc5
+                g_p1 = g_acc1 / total
+                g_p3 = g_acc3 / total / 3
+                g_p5 = g_acc5 / total / 5
+                bar.set_postfix(p1=p1, p3=p3, p5=p5, g_p1=g_p1, g_p3=g_p3, g_p5=g_p5)
+            
             if mode=='test':
                 _scores, _indices = torch.topk(logits.detach().cpu(), k=100)
                 _labels = torch.stack([candidates[i][_indices[i]] for i in range(_indices.shape[0])], dim=0)
                 pred_scores.append(_scores.cpu())
                 pred_labels.append(_labels.cpu())
-    
+            
         bar.close()
         self.swa_swap_params()
         if mode=='test':

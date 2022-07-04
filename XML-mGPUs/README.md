@@ -1,4 +1,4 @@
-# MHCE for XML
+# MHCE for XML (multi-GPUs version)
 
 ## Introduction
 MHCE-XML makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
@@ -17,21 +17,24 @@ The pretrained model, including bert, roberta and xlnet, can be download from [H
 ## Quickly Start
 When the dataset and the pretrained model are download, you can quickly run MHCE-XML by
 ```shell script
-data_name = '**'
-data_path = '**'
-model_path = '**'
-python src/main.py 
+data_name = eurlex4k
+data_path = **
+model_path = **
+CUDA_VISIBLE_DEVICES=0,2,3,4,5,6,7,8 python -m torch.distributed.launch 
+    --nproc_per_node=5 --use_env src/main.py
     --dataset $data_name 
     --data_path $data_path 
-    --bert_path $model_path  
-    --lr 1e-4 --epoch 20  
-    --swa --swa_warmup 2
-    --swa_step 100 
-    --batch 16
+    --model_path $model_path 
+    --lr 1e-4 
+    --epoch 5 
+    --use_swa 
+    --swa_warmup_epoch 1 
+    --swa_step 10000 
+    --batch 16 
+    --eval_step 10000
     --num_group 172 
 ```
-Note that when 'num_group' greater than 0, MHCE-XML use MHE for the XML task. Otherwise, MHCE-XML is the simple multi-label classification method. See script 'run.sh' for detail setting.
-
+Note that this version has slightly reduced performance compared to the single GPU [XML](https://github.com/liangdaojun/MHCE/blob/main/XML) version, and we will continue to update this version to bridge this gap.
 
 ## Training and Testing
 Clone the code repository
@@ -41,13 +44,11 @@ git clone git@github.com:liangdaojun/MHCE.git
 
 and go to the directory "MHCE/XML", run
 ```bash
-./run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
+bash run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
 ```
 
 Note that:
 - Model was trained with Python 3.7 with CUDA 10.X.
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
-- The code partly refer to [LightXML](https://github.com/kongds/LightXML).
-
-- Please refer to our [XML-mGPUs](https://github.com/liaingdaojun/MHCE/XML-mGPUs) for multi-GPU version.README.md
+- Please refer to our [XML](https://github.com/liangdaojun/MHCE/blob/main/XML) for single-GPU version.

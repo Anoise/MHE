@@ -1,8 +1,11 @@
+import os
 import math
 import datetime
 import numpy as np
 import torch
 import random
+
+
 class Logger:
     def __init__(self, name):
         self.name = name
@@ -16,11 +19,17 @@ class Logger:
 def get_exp_name(dataset,bert,num_group):
     name = [dataset, '' if bert == 'bert-base' else bert]
     if dataset in ['wiki500k', 'amazon670k', 'amazon13m']:
-        name.append('t'+str(num_group))
+        name.append(str(num_group))
 
     return '_'.join([i for i in name if i != ''])
 
 def init_seed(seed):
+    if not os.path.exists('models'):
+        os.makedirs('models')
+    if not os.path.exists('results'):
+        os.makedirs('results')
+    if not os.path.exists('log'):
+        os.makedirs('log')
     np.random.seed(seed)
     random.seed(seed)
     torch.manual_seed(seed)

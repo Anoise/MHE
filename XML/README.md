@@ -1,85 +1,53 @@
-# MHCE for CIFAR
+# MHCE for XML
 
-## Training
+## Introduction
+MHCE-XML makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
+
+## Preparation
+The used datasets are download from 
+* [EUR-Lex](https://drive.google.com/open?id=1iPGbr5-z2LogtMFG1rwwekV_aTubvAb2)
+* [Wiki10-31K](https://drive.google.com/open?id=1Tv4MHQzDWTUC9hRFihRhG8_jt1h0VhnR)
+* [AmazonCat-13K](https://drive.google.com/open?id=1VwHAbri6y6oh8lkpZ6sSY_b1FRNnCLFL)
+* [Wiki-500K](https://drive.google.com/open?id=1bGEcCagh8zaDV0ZNGsgF0QtwjcAm0Afk)
+* [Amazon-670K](https://drive.google.com/open?id=1Xd4BPFy1RPmE7MEXMu77E2_xWOhR1pHW)
+* [Amazon3M](https://drive.google.com/open?id=187vt5vAkGI2mS2WOMZ2Qv48YKSjNbQv4) 
+
+The pretrained model, including bert, roberta and xlnet, can be download from [Huggingface](https://huggingface.co).
+
+## Quickly Start
+When the dataset and the pretrained model are download, you can quickly run MHCE-XML by
+```shell script
+data_name = **
+data_path = **
+model_path = **
+python src/main.py 
+    --dataset $data_name 
+    --data_path $data_path 
+    --bert_path $model_path  
+    --lr 1e-4 --epoch 20  
+    --swa --swa_warmup 2
+    --swa_step 100 
+    --batch 16
+    --num_group 172 
+```
+Note that when 'num_group' greater than 0, MHCE-XML use MHE for the XML task. Otherwise, MHCE-XML is the simple multi-label classification method. See script 'run.sh' for detail setting.
+
+
+## Training and Testing
 Clone the code repository
 ```git
 git clone git@github.com:liangdaojun/MHCE.git
 ```
 
-### Multi-Head Product (MHP)
-Go to the directory "MHCE/Classification", and run
-```python
-python MHP-CIFAR/run_mhp_cifar.py 
-    --dataset c100 
-    --data-path ../../Data/cifar100  
-    --epochs 200
-    --batch-size 256  
-    --num-classes 10 10 
-    --save-path checkpoint_mhp
-```
-
-### Multi-Head Embedding (MHE)
-Go to the directory "MHCE/Classification", and run
-```python
-python MHE-CIFAR/run_mhe_h2.py 
-    --dataset c100 
-    --data-path ../../Data/cifar100  
-    --epochs 200
-    --batch-size 256  
-    --num-classes 10 10 
-    --save-path checkpoint_mhe
-```
-For head=3, run
-```python
-python MHE-CIFAR/run_mhe_h3.py 
-    --dataset c100 
-    --data-path ../../Data/cifar100  
-    --epochs 200
-    --batch-size 256  
-    --num-classes 4 5 5
-    --save-path checkpoint_mhe
-```
-
-### Multi-Head Sampling (MHS)
-Go to the directory "MHCE/Classification", and run
-```python
-python MHS-CIFAR/run_mhs_cifar.py 
-    --dataset c100 
-    --data-path ../../Data/cifar100  
-    --epochs 200
-    --batch-size 256  
-    --num-classes 10 10 
-    --save-path checkpoint_mhs
+and go to the directory "MHCE/XML", run
+```bash
+bash run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
 ```
 
 Note that:
 - Model was trained with Python 3.7 with CUDA 10.X.
 - Model should work as expected with pytorch >= 1.7 support was recently included.
-- The hyperparameter "num-classes" is the factorization of the total number of categories, which can be greater than the number of categories.
+- The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
+- The code partly refer to [LightXML](https://github.com/kongds/LightXML).
 
-
-
----
-
-# MHCE for ImageNet
-The code repository for training ImageNet refers to Pytorch[https://pytorch.org].
-
-Go to the directory "MHCE/Classification", and run
-```python
-python MHCE-ImageNet/[main_mhp.py or main_mhe.py or main_mhs.py]
-    -a resnet50 
-    --data [your ImageNet data path]
-    --dist-url 'tcp://127.0.0.1:6006' 
-    --dist-backend 'nccl' 
-    --multiprocessing-distributed 
-    --world-size 1 
-    --rank 0 [imagenet-folder with train and val folders]
-    --epochs 100
-    --batch-size 256  
-    --num-classes 40 25 
-```
-
----
-## Testing
-
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
+- Please refer to our [XML-mGPUs](https://github.com/liaingdaojun/MHCE/XML-mGPUs) for multi-GPU version.

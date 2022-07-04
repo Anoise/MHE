@@ -8,7 +8,7 @@ from torch.utils.data import Dataset
 
 import tqdm
 
-def createDataCSV(dataset):
+def createDataCSV(dataset,path='/home/user/Data'):
     labels = []
     texts = []
     dataType = []
@@ -19,11 +19,10 @@ def createDataCSV(dataset):
                 'amazoncat13k': 'AmazonCat-13K',
                 'amazon670k': 'Amazon-670K',
                 'eurlex4k': 'Eurlex-4K',
-                'amazon13m':'Amazon-3M'}
+                'amazon3m':'Amazon-3M'}
 
     assert dataset in name_map
     dataset = name_map[dataset]
-    path='/home/user/Data'
     fext = '_texts.txt' if dataset == 'Eurlex-4K' else '_raw_texts.txt'
     with open(path+f'/data/{dataset}/train{fext}') as f:
         for i in tqdm.tqdm(f):

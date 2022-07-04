@@ -5,9 +5,9 @@ import torch
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 
-from dataset_v3 import Dataset, createDataCSV
+from dataset import Dataset, createDataCSV
 import utils
-from model_amp_v3 import XMLModel
+from model import XMLModel
 
 
 def get_args():
@@ -17,8 +17,8 @@ def get_args():
     parser.add_argument('--lr', type=float, required=False, default=0.0001)
     parser.add_argument('--seed', type=int, required=False, default=6088)
     parser.add_argument('--epoch', type=int, required=False, default=15)
-    parser.add_argument('--dataset', type=str, required=False, default='eurlex4k')  # amazon670k  
-    parser.add_argument('--data_path', type=str, required=False, default='/home/user/Data/data')  # amazon670k  
+    parser.add_argument('--dataset', type=str, required=False, default='eurlex4k')
+    parser.add_argument('--data_path', type=str, required=False, default='')
     parser.add_argument('--model', type=str, required=False, default='bert-base')
     parser.add_argument('--model_path', type=str, required=False, default='../NLP-Model')
     parser.add_argument('--resume', action='store_true',default=False)

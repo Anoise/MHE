@@ -23,7 +23,7 @@ if __name__ == '__main__':
         model_name = [args.dataset, '' if berts[index] == 'bert-base' else berts[index]]
         model_name = '_'.join([i for i in model_name if i != ''])
 
-        model = LightXML(n_labels=len(label_map), bert=berts[index])
+        model = XMLMHE(n_labels=len(label_map), bert=berts[index])
 
         print(f'models/model-model_name.bin')
         model.load_state_dict(torch.load(f'models/model-{model_name}.bin'))
