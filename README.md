@@ -1,12 +1,14 @@
 # Multi-Head Combination Encoding (MHCE) for Extreme Label Classification
 
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE.jpg">
 
 ## Introduction
+
 - Aiming at solving the eXtreme Label Classification (XLC) problem, three kinds of Multi-Head Combination Encoding (MHCE) methods are proposed, including Multi-Head Product (MHP), Multi-Head Embedding (MHE) and Multi-Head Sampling (MHS). 
 - Since there are no assumptions made on the label space in obtaining these methods, they can be flexibly applied to different XLC tasks such as image classification, face recognition, eXtreme Multi-label Classification (XMC) and Neural Machine Translation (NMT). 
 - The results show that these methods outperform or approach the performance of existing state-of-the-art (SOTA) methods while greatly simplifying the training and inference process of the model.
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE.jpg">
+
 
 ## Classification
 
