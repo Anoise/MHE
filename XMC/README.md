@@ -54,6 +54,6 @@ Note that:
 
 ## Performance
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_XMC1.jpg">
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE-XMC1.jpg">
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_XMC2.jpg">
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE-XMC2.jpg">
