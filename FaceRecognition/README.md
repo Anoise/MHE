@@ -72,4 +72,4 @@ CUDA_VISIBLE_DEVICES=0, python eval_ijbc.py
 
 ## Performance
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Face.jpg">
+<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE-Face.jpg">
