@@ -62,7 +62,7 @@ Note that:
 ---
 
 # MHCE for ImageNet
-The code repository for training ImageNet refers to Pytorch[https://pytorch.org].
+The code repository for training ImageNet refers to [Pytorch](https://pytorch.org).
 
 Go to the directory "MHCE/Classification", and run
 ```python

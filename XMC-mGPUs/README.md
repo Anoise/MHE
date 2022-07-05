@@ -1,7 +1,7 @@
-# MHCE for XML (multi-GPUs version)
+# MHCE for XMC (multi-GPUs version)
 
 ## Introduction
-MHCE-XML makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
+MHCE-XMC makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
 
 ## Preparation
 The used datasets are download from 
@@ -15,7 +15,7 @@ The used datasets are download from
 The pretrained model, including bert, roberta and xlnet, can be download from [Huggingface](https://huggingface.co).
 
 ## Quickly Start
-When the dataset and the pretrained model are download, you can quickly run MHCE-XML by
+When the dataset and the pretrained model are download, you can quickly run MHCE-XMC by
 ```shell script
 data_name = eurlex4k
 data_path = **
@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=0,2,3,4,5,6,7,8 python -m torch.distributed.launch
     --eval_step 10000
     --num_group 172 
 ```
-Note that this version has slightly reduced performance compared to the single GPU [XML](https://github.com/liangdaojun/MHCE/blob/main/XML) version, and we will continue to update this version to bridge this gap.
+Note that this version has slightly reduced performance compared to the single GPU [XMC](https://github.com/liangdaojun/MHCE/blob/main/XMC) version, and we will continue to update this version to bridge this gap.
 
 ## Training and Testing
 Clone the code repository
@@ -42,7 +42,7 @@ Clone the code repository
 git clone git@github.com:liangdaojun/MHCE.git
 ```
 
-and go to the directory "MHCE/XML", run
+and go to the directory "MHCE/XMC", run
 ```bash
 bash run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
 ```
@@ -51,4 +51,4 @@ Note that:
 - Model was trained with Python 3.7 with CUDA 10.X.
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
-- Please refer to our [XML](https://github.com/liangdaojun/MHCE/blob/main/XML) for single-GPU version.
+- Please refer to our [XMC](https://github.com/liangdaojun/MHCE/blob/main/XMC) for single-GPU version.
