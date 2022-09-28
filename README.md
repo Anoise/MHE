@@ -8,21 +8,21 @@
 - Since there are no assumptions made on the label space in obtaining these methods, they can be flexibly applied to different XLC tasks such as image classification, face recognition, eXtreme Multi-label Classification (XMC) and Neural Machine Translation (NMT). 
 - The results show that these methods outperform or approach the performance of existing state-of-the-art (SOTA) methods while greatly simplifying the training and inference process of the model.
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE.jpg">
+<img src="https://github.com/Anoise/MHCE/blob/main/Images/MHCE.jpg">
 
 ## Classification
 
-Please refer to [Classification](https://github.com/liangdaojun/MHCE/tree/main/Classification) for MHCE on ImageNet and CIFAR datasets.
+Please refer to [Classification](https://github.com/Anoise/MHCE/tree/main/Classification) for MHCE on ImageNet and CIFAR datasets.
 
 ## XMC
 
-- Please refer to [XMC](https://github.com/liangdaojun/MHCE/tree/main/XMC) for MHE on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets.
+- Please refer to [XMC](https://github.com/Anoise/MHCE/tree/main/XMC) for MHE on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets.
 
-- Please refer to [XMC-mGPUs](https://github.com/liangdaojun/MHCE/tree/main/XMC-mGPUs) for MHE on multi-GPUs.
+- Please refer to [XMC-mGPUs](https://github.com/Anoise/MHCE/tree/main/XMC-mGPUs) for MHE on multi-GPUs.
 
 ## Face Recognition
 
-Please refer to [FaceRecognition](https://github.com/liangdaojun/MHCE/tree/main/FaceRecognition) for MHS pretrained on WebFace and MS1MV datasets.
+Please refer to [FaceRecognition](https://github.com/Anoise/MHCE/tree/main/FaceRecognition) for MHS pretrained on WebFace and MS1MV datasets.
 
 
 ## Citations
