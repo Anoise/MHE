@@ -3,7 +3,7 @@
 ## Training
 Clone the code repository
 ```git
-git clone git@github.com:liangdaojun/MHCE.git
+git clone git@github.com:Anoise/MHCE.git
 ```
 
 ### Multi-Head Product (MHP)
