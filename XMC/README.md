@@ -36,7 +36,7 @@ Note that when 'num_group' greater than 0, MHCE-XMC use MHE for the XMC task. Ot
 ## Training and Testing
 Clone the code repository
 ```git
-git clone git@github.com:liangdaojun/MHCE.git
+git clone git@github.com:Anoise/MHCE.git
 ```
 
 and go to the directory "MHCE/XMC", run
