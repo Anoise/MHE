@@ -1,7 +1,7 @@
-# MHCE for XMC
+# MHE for XMC
 
 ## Introduction
-MHCE-XMC makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
+MHE-XMC makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
 
 ## Preparation
 The used datasets are download from 
@@ -15,7 +15,7 @@ The used datasets are download from
 The pretrained model, including bert, roberta and xlnet, can be download from [Huggingface](https://huggingface.co).
 
 ## Quickly Start
-When the dataset and the pretrained model are download, you can quickly run MHCE-XMC by
+When the dataset and the pretrained model are download, you can quickly run MHE-XMC by
 ```shell script
 data_name = **
 data_path = **
@@ -30,16 +30,16 @@ python src/main.py
     --batch 16
     --num_group 172 
 ```
-Note that when 'num_group' greater than 0, MHCE-XMC use MHE for the XMC task. Otherwise, MHCE-XMC is the simple multi-label classification method. See script 'run.sh' for detail setting.
+Note that when 'num_group' greater than 0, MHE-XMC use MHE for the XMC task. Otherwise, MHE-XMC is the simple multi-label classification method. See script 'run.sh' for detail setting.
 
 
 ## Training and Testing
 Clone the code repository
 ```git
-git clone git@github.com:Anoise/MHCE.git
+git clone git@github.com:Anoise/MHE.git
 ```
 
-and go to the directory "MHCE/XMC", run
+and go to the directory "MHE/XMC", run
 ```bash
 bash run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
 ```
@@ -50,10 +50,10 @@ Note that:
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 - The code partly refer to [LightXML](https://github.com/kongds/LightXML).
 
-- Please refer to our [XMC-mGPUs](https://github.com/liaingdaojun/MHCE/XMC-mGPUs) for multi-GPUs version.
+- Please refer to our [XMC-mGPUs](https://github.com/liaingdaojun/MHE/XMC-mGPUs) for multi-GPUs version.
 
 ## Performance
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE-XMC1.jpg">
+<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE-XMC1.jpg">
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE-XMC2.jpg">
+<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE-XMC2.jpg">
