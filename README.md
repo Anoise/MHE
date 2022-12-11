@@ -1,8 +1,13 @@
 # Multi-Head Encoding (MHE) for Extreme Label Classification
 
+## Introductioin
+
+A Multi-Head Encoding (MHE) mechanism is proposed to address the parameter overweight problem in Extreme Label Classification (XLC) tasks, which replaces the original classifier with multi-head classifier. During training, the extreme labels are decomposed into multiple short local labels, and each classification head is trained with the local labels. While during testing, the predicted labels are combined based on the local predictions of each classification head. In order to study the representation ability of MHE, we generalize the low-rank approximation of the classifier from the Frobenius-norm metric to the Cross-Entropy metric. Based on this, three MHE-based training and testing methods, i.e., Multi-Head Product (MHP), Multi-Head Cascade (MHC) and Multi-Head Sampling (MHS), are proposed in this paper to cope with the parameter overweight problem in different XLC tasks. Specifically, MHP adopts the Kronecker product to approximate the original classifier, MHC utilizes the cascade of multiple classification heads to obtain candidate labels from coarse to fine, and MHS samples part of the classification heads for training to reduce the complexity of the computation.
+
 <img src="https://github.com/Anoise/MHE/blob/main/Images/intro.png">
 
-## Introduction
+## Contributions
+
 
   - An MHE mechanism is proposed to solve the parameter overweight problem in XLC tasks, and its parameters are geometrically reduced while the representation ability is theoretically analyzed.
   - The low-rank approximation problem is generalized from the Frobenius-norm metric to the CE metric, and it is found that nonlinear operations can greatly reduce the classifier's dependence on the rank of its weights.
