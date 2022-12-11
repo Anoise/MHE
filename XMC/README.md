@@ -50,7 +50,7 @@ Note that:
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 - The code partly refer to [LightXML](https://github.com/kongds/LightXML).
 
-- Please refer to our [XMC-mGPUs](https://github.com/Anoise/MHE/XMC-mGPUs) for multi-GPUs version.
+- Please refer to our [XMC-mGPUs](https://github.com/Anoise/MHE/tree/main/XMC-mGPUs) for multi-GPUs version.
 
 ## Performance
 
