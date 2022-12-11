@@ -37,7 +37,7 @@ python MHP-CIFAR/run_mhp_cifar.py
 ### Multi-Head Cascade (MHE)
 Go to the directory "MHE/Classification", and run
 ```python
-python MHE-CIFAR/run_mhc_h2.py 
+python MHC-CIFAR/run_mhc_h2.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
     --epochs 200
@@ -47,7 +47,7 @@ python MHE-CIFAR/run_mhc_h2.py
 ```
 For head=3, run
 ```python
-python MHE-CIFAR/run_mhc_h3.py 
+python MHC-CIFAR/run_mhc_h3.py 
     --dataset c100 
     --data-path ../../Data/cifar100  
     --epochs 200
