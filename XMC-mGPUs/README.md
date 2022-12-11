@@ -52,3 +52,9 @@ Note that:
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 - Please refer to our [XMC](https://github.com/Anoise/MHE/blob/main/XMC) for single-GPU version.
+
+## Performance
+
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-XMC1.jpg">
+
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-XMC2.jpg">
