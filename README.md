@@ -1,6 +1,6 @@
 # Multi-Head Encoding (MHE) for Extreme Label Classification
 
-
+<img src="https://github.com/Anoise/MHCE/blob/main/Images/intro.png">
 
 ## Introduction
 
@@ -10,7 +10,7 @@
   - MHE can arbitrarily partition the label space, making it flexibly applicable to any XLC task, including image classification, face recognition, XMC and neural machine translation (NMT), etc.
   - MHC has no restriction on the label space and abandons techniques such as HLT and label clustering, thus greatly simplifies the training and inference process of the model on XMC tasks.
 
-<img src="https://github.com/Anoise/MHCE/blob/main/Images/MHCE.jpg">
+<img src="https://github.com/Anoise/MHCE/blob/main/Images/arch.png">
 
 ## Classification
 
