@@ -1,6 +1,6 @@
 # Multi-Head Encoding (MHE) for Extreme Label Classification
 
-<img src="https://github.com/Anoise/MHCE/blob/main/Images/intro.png">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/intro.png">
 
 ## Introduction
 
@@ -10,7 +10,7 @@
   - MHE can arbitrarily partition the label space, making it flexibly applicable to any XLC task, including image classification, face recognition, XMC and neural machine translation (NMT), etc.
   - MHC has no restriction on the label space and abandons techniques such as HLT and label clustering, thus greatly simplifies the training and inference process of the model on XMC tasks.
 
-<img src="https://github.com/Anoise/MHCE/blob/main/Images/arch.png">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/arch.png">
 
 ## Classification
 
@@ -19,7 +19,7 @@
 ## Training
 Clone the code repository
 ```git
-git clone git@github.com:liangdaojun/MHCE.git
+git clone git@github.com:Anoise/MHE.git
 ```
 
 ### Multi-Head Product (MHP)
@@ -97,9 +97,9 @@ python MHE-ImageNet/[main_mhp.py or main_mhc.py or main_mhs.py]
 
 ## Testing
 
-<img src="https://github.com/liangdaojun/MHCE/blob/main/Images/MHCE_Classification.jpg">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE_Classification.jpg">
 
-Please refer to [Classification](https://github.com/Anoise/MHCE/tree/main/Classification) for MHE on ImageNet and CIFAR datasets for details.
+Please refer to [Classification](https://github.com/Anoise/MHE/tree/main/Classification) for MHE on ImageNet and CIFAR datasets for details.
 
 ---
 ## MHE for XMC
@@ -137,7 +137,7 @@ Note that when 'num_group' greater than 0, MHE-XMC use MHE for the XMC task. Oth
 ### Training and Testing
 Clone the code repository
 ```git
-git clone git@github.com:liangdaojun/MHE.git
+git clone git@github.com:Anoise/MHE.git
 ```
 
 and go to the directory "MHE/XMC", run
@@ -151,17 +151,55 @@ Note that:
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 - The code partly refer to [LightXML](https://github.com/kongds/LightXML).
 
-- Please refer to our [XMC-mGPUs](https://github.com/liaingdaojun/MHE/XMC-mGPUs) for multi-GPUs version.
+## MHE for XMC (multi-GPUs version)
+
+### Quickly Start
+When the dataset and the pretrained model are download, you can quickly run MHE-XMC by
+```shell script
+data_name = eurlex4k
+data_path = **
+model_path = **
+CUDA_VISIBLE_DEVICES=0,2,3,4,5,6,7,8 python -m torch.distributed.launch 
+    --nproc_per_node=5 --use_env src/main.py
+    --dataset $data_name 
+    --data_path $data_path 
+    --model_path $model_path 
+    --lr 1e-4 
+    --epoch 5 
+    --use_swa 
+    --swa_warmup_epoch 1 
+    --swa_step 10000 
+    --batch 16 
+    --eval_step 10000
+    --num_group 172 
+```
+Note that this version has slightly reduced performance compared to the single GPU [XMC](https://github.com/Anoise/MHE/blob/main/XMC) version, and we will continue to update this version to bridge this gap.
+
+### Training and Testing
+Clone the code repository
+```git
+git clone git@github.com:Anoise/MHE.git
+```
+
+and go to the directory "MHE/XMC", run
+```bash
+bash run.sh [eurlex4k|wiki31k|amazon13k|amazon670k|wiki500k]
+```
 
 ### Performance
 
-<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE-XMC1.jpg">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-XMC1.jpg">
 
-<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE-XMC2.jpg">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-XMC2.jpg">
 
-- Please refer to [XMC](https://github.com/Anoise/MHCE/tree/main/XMC) for MHC on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets.
+Note that:
+- Model was trained with Python 3.7 with CUDA 10.X.
+- Model should work as expected with pytorch >= 1.7 support was recently included.
+- The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 
-- Please refer to [XMC-mGPUs](https://github.com/Anoise/MHCE/tree/main/XMC-mGPUs) for MHC on multi-GPUs.
+- Please refer to [XMC](https://github.com/Anoise/MHE/tree/main/XMC) for MHC on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets.
+
+- Please refer to [XMC-mGPUs](https://github.com/Anoise/MHE/tree/main/XMC-mGPUs) for MHC on multi-GPUs.
 
 ---
 ## Face Recognition (MHS-Arcface)
@@ -236,9 +274,9 @@ CUDA_VISIBLE_DEVICES=0, python eval_ijbc.py
 
 ### Performance
 
-<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE-Face.jpg">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-Face.jpg">
 
-Please refer to [FaceRecognition](https://github.com/Anoise/MHCE/tree/main/FaceRecognition) for MHS pretrained on WebFace and MS1MV datasets.
+Please refer to [FaceRecognition](https://github.com/Anoise/MHE/tree/main/FaceRecognition) for MHS pretrained on WebFace and MS1MV datasets.
 
 ---
 ## Citations
