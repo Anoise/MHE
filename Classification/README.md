@@ -80,4 +80,4 @@ python MHE-ImageNet/[main_mhp.py or main_mhc.py or main_mhs.py]
 ---
 ## Testing
 
-<img src="https://github.com/liangdaojun/MHE/blob/main/Images/MHE_Classification.jpg">
+<img src="https://github.com/Anoise/MHE/blob/main/Images/MHE_Classification.jpg">
