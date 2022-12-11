@@ -23,10 +23,10 @@ def createDataCSV(dataset, path):
             texts.append(i.replace('\n', ''))
             dataType.append('train')
 
-    # with open(path+f'/{dataset}/test{fext}') as f:
-    #     for i in tqdm.tqdm(f):
-    #         texts.append(i.replace('\n', ''))
-    #         dataType.append('test')
+    with open(path+f'/{dataset}/test{fext}') as f:
+        for i in tqdm.tqdm(f):
+            texts.append(i.replace('\n', ''))
+            dataType.append('test')
 
     with open(path+f'/{dataset}/train_labels.txt') as f:
         for i in tqdm.tqdm(f):
@@ -35,13 +35,11 @@ def createDataCSV(dataset, path):
             labels.append(i.replace('\n', ''))
 
 
-    # with open(path+f'/{dataset}/test_labels.txt') as f:
-    #     print(len(label_map))
-    #     for i in tqdm.tqdm(f):
-    #         for l in i.replace('\n', '').split():
-    #             label_map[l] = 0
-    #         labels.append(i.replace('\n', ''))
-    #     print(len(label_map))
+    with open(path+f'/{dataset}/test_labels.txt') as f:
+        for i in tqdm.tqdm(f):
+            for l in i.replace('\n', '').split():
+                label_map[l] = 0
+            labels.append(i.replace('\n', ''))
 
     assert len(texts) == len(labels) == len(dataType)
 
