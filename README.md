@@ -104,7 +104,7 @@ python MHE-ImageNet/[main_mhp.py or main_mhc.py or main_mhs.py]
 
 <img src="https://github.com/Anoise/MHE/blob/main/Images/MHE_Classification.jpg">
 
-Please refer to [Classification](https://github.com/Anoise/MHE/tree/main/Classification) for MHE on ImageNet and CIFAR datasets for more details.
+Please refer to [Classification](https://github.com/Anoise/MHE/tree/main/Classification) of MHE on ImageNet and CIFAR datasets for more details.
 
 ---
 ## MHE for XMC
@@ -202,9 +202,9 @@ Note that:
 - Model should work as expected with pytorch >= 1.7 support was recently included.
 - The hyperparameter "num_group" is the factorization of the total number of categories, which can be greater than the number of categories.
 
-- Please refer to [XMC](https://github.com/Anoise/MHE/tree/main/XMC) for MHC on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets for more details.
+- Please refer to [XMC](https://github.com/Anoise/MHE/tree/main/XMC) of MHC on EUR-Lex, Wiki10-31K,AmazonCat-13K, Wiki-500K, Amazon-670K, Amazon3M datasets for more details.
 
-- Please refer to [XMC-mGPUs](https://github.com/Anoise/MHE/tree/main/XMC-mGPUs) for MHC on multi-GPUs for more details.
+- Please refer to [XMC-mGPUs](https://github.com/Anoise/MHE/tree/main/XMC-mGPUs) of MHC on multi-GPUs for more details.
 
 ---
 ## Face Recognition (MHS-Arcface)
@@ -281,7 +281,7 @@ CUDA_VISIBLE_DEVICES=0, python eval_ijbc.py
 
 <img src="https://github.com/Anoise/MHE/blob/main/Images/MHE-Face.jpg">
 
-Please refer to [FaceRecognition](https://github.com/Anoise/MHE/tree/main/FaceRecognition) for MHS pretrained on WebFace and MS1MV datasets for more details.
+Please refer to [FaceRecognition](https://github.com/Anoise/MHE/tree/main/FaceRecognition) of MHS pretrained on WebFace and MS1MV datasets for more details.
 
 ---
 ## Citations
