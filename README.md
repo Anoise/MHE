@@ -39,7 +39,7 @@ python MHP-CIFAR/run_mhp_cifar.py
     --save-path checkpoint_mhp
 ```
 
-### Multi-Head Cascade (MHE)
+### Multi-Head Cascade (MHC)
 Go to the directory "MHE/Classification", and run
 ```python
 python MHC-CIFAR/run_mhc_h2.py 
