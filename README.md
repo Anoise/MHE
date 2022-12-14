@@ -118,7 +118,7 @@ The used datasets are download from
 * [Amazon-670K](https://drive.google.com/open?id=1Xd4BPFy1RPmE7MEXMu77E2_xWOhR1pHW)
 * [Amazon3M](https://drive.google.com/open?id=187vt5vAkGI2mS2WOMZ2Qv48YKSjNbQv4) 
 
-The pretrained model, including bert, roberta and xlnet, can be download from [Huggingface](https://huggingface.co).
+The pretrained model, including bert, roberta and xlnet, which can be download from [Huggingface](https://huggingface.co).
 
 ### Quickly Start
 When the dataset and the pretrained model are download, you can quickly run MHE-XMC by
