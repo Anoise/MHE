@@ -5,7 +5,6 @@ import numpy as np
 import torch
 import random
 
-
 class Logger:
     def __init__(self, name):
         self.name = name
