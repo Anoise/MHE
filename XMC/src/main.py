@@ -9,8 +9,8 @@ from transformers import AdamW
 from dataset import MDataset, createDataCSV
 from model import XMLMHE
 from utils import *
-
 import argparse
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch', type=int, required=False, default=16)
 parser.add_argument('--update_count', type=int, required=False, default=1)
