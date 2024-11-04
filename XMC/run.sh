@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 arr=(bert roberta xlnet)
 
