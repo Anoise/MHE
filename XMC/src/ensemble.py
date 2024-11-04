@@ -4,8 +4,8 @@ from torch.utils.data import DataLoader
 from dataset import MDataset, createDataCSV
 
 from model import XMLMHE
-
 import argparse
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, required=False, default='eurlex4k')
 args = parser.parse_args()
