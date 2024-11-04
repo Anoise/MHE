@@ -9,7 +9,6 @@ from torch import nn
 from transformers import BertTokenizer, BertConfig, BertModel
 from transformers import RobertaModel, RobertaConfig, RobertaTokenizer
 from transformers import XLNetTokenizer, XLNetModel, XLNetConfig
-
 from tokenizers import BertWordPieceTokenizer
 from transformers import RobertaTokenizerFast
 
