@@ -1,7 +1,6 @@
 import argparse
 import logging
 import os
-
 import torch
 from torch import distributed
 from torch.utils.tensorboard import SummaryWriter
