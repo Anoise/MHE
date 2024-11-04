@@ -10,7 +10,6 @@ parser.add_argument('--model2', type=str, required=False, default='')
 parser.add_argument('--model3', type=str, required=False, default='')
 
 parser.add_argument('--dataset', type=str, required=False, default='eurlex4k')
-
 args = parser.parse_args()
 
 if __name__ == '__main__':
