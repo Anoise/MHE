@@ -6,7 +6,7 @@ we consider the model pretraining method with XLC tasks such as image classifica
 The code repository is based on [insightface](https://github.com/deepinsight/insightface), please refer to it to complete the whole configuration. Here, the minimal configuration can be done via
 ```shell script
  pip install -r requirement.txt
-```
+``` 
 
 ## Datasets
 
