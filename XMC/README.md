@@ -1,4 +1,4 @@
-# MHE for XMC
+# MHE for XMC 
 
 ## Introduction
 MHE-XMC makes no assumptions about the label space and does not use techniques such as HLT and label clustering for preprocessing. This suggests that additional, complex preprocessing and training tricks are not critical for the XMC task, and using simple label partitioning techniques are sufficient to process the XMC task.
