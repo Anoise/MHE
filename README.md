@@ -1,6 +1,6 @@
-# Multi-Head Encoding (MHE) for Extreme Label Classification
+# Multi-Head Encoding (MHE) for Extreme Label Classification (TPAMI 2024)
 
-## Introductioin 
+## Introductioin
 
 A Multi-Head Encoding (MHE) mechanism is proposed to address the parameter overweight problem in Extreme Label Classification (XLC) tasks, which replaces the original classifier with multi-head classifier. During training, the extreme labels are decomposed into multiple short local labels, and each classification head is trained with the local labels. While during testing, the predicted labels are combined based on the local predictions of each classification head. In order to study the representation ability of MHE, we generalize the low-rank approximation of the classifier from the Frobenius-norm metric to the Cross-Entropy metric. Based on this, three MHE-based training and testing methods, i.e., Multi-Head Product (MHP), Multi-Head Cascade (MHC) and Multi-Head Sampling (MHS), are proposed in this paper to cope with the parameter overweight problem in different XLC tasks. Specifically, MHP adopts the Kronecker product to approximate the original classifier, MHC utilizes the cascade of multiple classification heads to obtain candidate labels from coarse to fine, and MHS samples part of the classification heads for training to reduce the complexity of the computation.
 
@@ -285,16 +285,15 @@ Please refer to [FaceRecognition](https://github.com/Anoise/MHE/tree/main/FaceRe
 
 ---
 ## Citations
-come soon!
-<!--
+
+Daojun Liang, Haixia Zhang, Dongfeng Yuan and Minggao Zhang. "Multi-Head Encoding for Extreme Label Classification", IEEE Transactions on Pattern Analysis and Machine Intelligence, TPAMI, 2024.
+
 ```
-@inproceedings{deng2019arcface,
-  title={Arcface: Additive angular margin loss for deep face recognition},
-  author={Deng, Jiankang and Guo, Jia and Xue, Niannan and Zafeiriou, Stefanos},
+@inproceedings{liang2024MHE,
+  title={Multi-Head Encoding for Extreme Label Classification},
+  author={Daojun, Liang and Haixia, Zhang and Dongfeng, Yuan and Minggao, Zhang},
   booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages={4690--4699},
-  year={2019}
+  year={2024}
 }
 
 ```
--->
