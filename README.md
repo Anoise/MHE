@@ -19,7 +19,7 @@ Experimental results, e.g., *extreme sigle-label and multi-label image recogniti
 - The model generalization becomes irrelevant to the semantics of the labels when they overfit the  data.
 <img src="https://github.com/Anoise/MHE/blob/main/Images/Converage.png">
 
-- Label preprocessing techniques, e.g., HLT and label clustering, are not necessary since the low rank approximation remains independent of label positioning. 
+- Label preprocessing techniques, e.g., HLT and label clustering, are not necessary since the low rank approximation remains independent of label positioning. This can not only significantly improve the training-inference speed, but also achieve multi-GPU parallel acceleration.  
 <img src="https://github.com/Anoise/MHE/blob/main/Images/LC_LRD.png">
 
 ## Contributions
