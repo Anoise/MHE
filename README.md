@@ -11,11 +11,12 @@ Experimental results, e.g., *extreme sigle-label and multi-label image recogniti
 
 - MHE is equivalent to OHE in the single label classification.
 <img src="https://github.com/Anoise/MHE/blob/main/Images/intro.png">
+
 - Training a low-rank networks using Cross-Entropy with softmax as the loss function
  can recover the same accuracy as the vanilla classifier, as long as the rank of weight $R([W,B])>1$ is satisfied.
 <img src="https://github.com/Anoise/MHE/blob/main/Images/Low_Rank.png">
 
--  The model generalization becomes irrelevant to the semantics of the labels when they overfit the  data.
+- The model generalization becomes irrelevant to the semantics of the labels when they overfit the  data.
 <img src="https://github.com/Anoise/MHE/blob/main/Images/Converage.png">
 
 - Label preprocessing techniques, e.g., HLT and label clustering, are not necessary since the low rank approximation remains independent of label positioning. 
