@@ -1,10 +1,12 @@
-# [Multi-Head Encoding (MHE) for Extreme Label Classification (TPAMI 2024 Accept)](https://arxiv.org/pdf/2412.10182)
+# [Multi-Head Encoding (MHE) for Extreme Label Classification (TPAMI 2025 Accept)](https://doi.org/10.1109/TPAMI.2024.3522298)
+
+[Online](https://doi.org/10.1109/TPAMI.2024.3522298), [Arxiv](https://arxiv.org/pdf/2412.10182), [WeiChat Info](), [Zhihu](), [CSDN]()
 
 ## Introductioin
 
 A [Multi-Head Encoding (MHE)](https://arxiv.org/abs/2412.10182) mechanism is proposed to address the parameter overweight problem in Extreme Label Classification (XLC) tasks, which replaces the original classifier with multi-head classifier. During training, the extreme labels are decomposed into multiple short local labels, and each classification head is trained with the local labels. While during testing, the predicted labels are combined based on the local predictions of each classification head. This reduces the computational load geometrically. 
 
- Based on this, three MHE-based training and testing methods are proposed in this paper to cope with the parameter overweight problem in different XLC tasks.
+Based on this, three MHE-based training and testing methods are proposed in this paper to cope with the parameter overweight problem in different XLC tasks.
 Experimental results, e.g., *extreme sigle-label and multi-label image recognition, extreme  multi-label text classification face recognition, model pre -training, and neural machine translation*, show that the proposed  methods achieve SOTA performance while significantly streamlining the training and inference processes of XLC tasks.
 
 ## Important Discovery
