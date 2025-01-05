@@ -1,6 +1,7 @@
 # [Multi-Head Encoding (MHE) for Extreme Label Classification (TPAMI 2025 Accept)](https://doi.org/10.1109/TPAMI.2024.3522298)
 
 Paper: [Online](https://doi.org/10.1109/TPAMI.2024.3522298), [Arxiv](https://arxiv.org/pdf/2412.10182)
+
 Intro: [WeiChat Info](https://mp.weixin.qq.com/s/v6SxHjUVENuyAbG0hETESg), [Zhihu](https://zhuanlan.zhihu.com/p/16432360258), [CSDN](https://blog.csdn.net/liangdaojun/article/details/144925237)
 
 ## Introductioin
