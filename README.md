@@ -1,6 +1,6 @@
 # [Multi-Head Encoding (MHE) for Extreme Label Classification (TPAMI 2025 Accept)](https://doi.org/10.1109/TPAMI.2024.3522298)
 
-[Online](https://doi.org/10.1109/TPAMI.2024.3522298), [Arxiv](https://arxiv.org/pdf/2412.10182), [WeiChat Info](), [Zhihu](), [CSDN]()
+[Online](https://doi.org/10.1109/TPAMI.2024.3522298), [Arxiv](https://arxiv.org/pdf/2412.10182), [WeiChat Info](https://mp.weixin.qq.com/s/v6SxHjUVENuyAbG0hETESg), [Zhihu](https://zhuanlan.zhihu.com/p/16432360258), [CSDN](https://blog.csdn.net/liangdaojun/article/details/144925237)
 
 ## Introductioin
 
@@ -305,6 +305,18 @@ Please refer to [FaceRecognition](https://github.com/Anoise/MHE/tree/main/FaceRe
 Daojun Liang, Haixia Zhang, Dongfeng Yuan and Minggao Zhang. "[Multi-Head Encoding for Extreme Label Classification](https://arxiv.org/pdf/2412.10182)", IEEE Transactions on Pattern Analysis and Machine Intelligence, TPAMI, 2024.
 
 ```
+@ARTICLE{liang2024MHE,
+  author={Liang, Daojun and Zhang, Haixia and Yuan, Dongfeng and Zhang, Minggao},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Multi-Head Encoding for Extreme Label Classification}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-14},
+  keywords={Training;Encoding;Testing;Computational modeling;Magnetic heads;Tensors;Face recognition;Vocabulary;Vectors;Semantics;EXtreme Multi-label Classification;extreme label classification;multi-head encoding},
+  doi={10.1109/TPAMI.2024.3522298}
+}
+% or ArXiv
 @inproceedings{liang2024MHE,
   title={Multi-Head Encoding for Extreme Label Classification},
   author={Daojun, Liang and Haixia, Zhang and Dongfeng, Yuan and Minggao, Zhang},
